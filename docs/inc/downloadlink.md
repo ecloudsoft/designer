@@ -1,0 +1,6 @@
+- [Mac]
+    - :arrow_double_down: [Download for MacOS (Apple Silicon)]
+    - :arrow_double_down: [Download for MacOS (Intel CPU)]
+- [Window]
+    - :arrow_double_down: [Download for Windows x64 ](https://www.e-cloudsoft.com/print/exe/win64/ec-print_win_x64-1.0.0.zip)
+    - :arrow_double_down: [Download for Windows x86 ](https://www.e-cloudsoft.com/print/exe/win32/ec-print_win_x32-1.0.0.exe)
