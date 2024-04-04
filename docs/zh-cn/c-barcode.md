@@ -10,7 +10,7 @@
 - **点击显示区域**进行旋转。
 - **拖动显示区域**调整大小。
 
-![Create55](../_images/zh-cn//Create55.gif)
+![Create55](../_images/zh-cn/Create55.gif)
 
 # 属性值设置
 
@@ -23,7 +23,7 @@
 - **标题显示隐藏：**控制标题的显示或隐藏。
 - **位置固定：** 设定元素是否固定在某个位置。
 
-![Create56](../_images/zh-cn//Create56.gif)
+![Create56](../_images/zh-cn/Create56.gif)
 
 ## 二、样式属性
 
@@ -35,7 +35,7 @@
 - **文本换行：** 不适用与二维码和条形码 TODO。
 - **旋转角度、元素层级：**设置元素数据过长显示模式、旋转角度以及元素的图层叠放顺序。
 
-![Create57](../_images/zh-cn//Create57.gif)
+![Create57](../_images/zh-cn/Create57.gif)
 
 ## 三、边框属性
 
@@ -43,7 +43,7 @@
 - **边框大小、边框颜色：** 调整边框的大小和颜色。
 - **左内边距、上内边距、右内边距、下内边距：** 设定二维码和条形码内容与边框的内边距。
 
-![Create58](../_images/zh-cn//Create58.gif)
+![Create58](../_images/zh-cn/Create58.gif)
 
 ## 四、高级属性
 

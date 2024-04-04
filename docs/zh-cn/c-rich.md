@@ -10,7 +10,7 @@
 - **点击html**进行旋转。
 - **拖动显示区域**调整大小。
 
-![Create51](../_images/zh-cn//Create51.gif)
+![Create51](../_images/zh-cn/Create51.gif)
 
 # 属性值设置
 
@@ -22,14 +22,14 @@
 - **隐藏规则：** 指定元素在某些情况下的隐藏位置，比如首页或者尾页隐藏。
 - **位置固定：** 设定元素是否固定在某个位置。
 
-![Create52](../_images/zh-cn//Create52.gif)
+![Create52](../_images/zh-cn/Create52.gif)
 
 ## 二、样式属性
 
 - **旋转角度：** 旋转元素的角度。
 - **元素层级：** 控制元素在图层中的显示顺序。
 
-![Create53](../_images/zh-cn//Create53.gif)
+![Create53](../_images/zh-cn/Create53.gif)
 
 ## 三、高级属性
 
@@ -41,4 +41,4 @@
 
 - **HTML元素的数据需要把双引号全部修改为单引号。**
 
-![Create54](../_images/zh-cn//Create54.gif)
+![Create54](../_images/zh-cn/Create54.gif)

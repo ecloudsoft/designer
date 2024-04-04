@@ -10,7 +10,7 @@
 - **点击图片**进行旋转。
 - **拖动显示区域**调整大小。
 
-![Create40](../_images/zh-cn//Create40.gif)
+![Create40](../_images/zh-cn/Create40.gif)
 
 # 属性值设置
 
@@ -24,14 +24,14 @@
 - **隐藏规则：** 指定图片在某些情况下的隐藏位置，比如首页或者尾页隐藏。
 - **位置固定：** 设定图片是否固定在某个位置。
 
-![Create41](../_images/zh-cn//Create41.gif)
+![Create41](../_images/zh-cn/Create41.gif)
 
 ## 二、样式属性
 
 - **旋转角度：** 旋转图片的角度。
 - **元素层级：** 控制图片在图层中的显示顺序。
 
-![Create42](../_images/zh-cn//Create42.gif)
+![Create42](../_images/zh-cn/Create42.gif)
 
 ## 三、高级属性
 

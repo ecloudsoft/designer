@@ -12,7 +12,7 @@
 - **点击文本**进行旋转。
 - **拖动文本区域**调整大小。
 
-![Create34](../_images/zh-cn//Create34.gif)
+![Create34](../_images/zh-cn/Create34.gif)
 
 # 属性值设置
 
@@ -25,21 +25,21 @@
 - **标题显示隐藏**：是否显示文本的标题。
 - **位置固定**：TODO，需要调查此功能的作用。
 
-![Create35](../_images/zh-cn//Create35.gif)
+![Create35](../_images/zh-cn/Create35.gif)
 
 ## 二、样式属性
 
 - **数据类型、格式：** 设定数据类型和对应的数据格式(可以选择既存的格式，也可以输入自定义格式)。
 
-![Create36](../_images/zh-cn//Create36.gif)
+![Create36](../_images/zh-cn/Create36.gif)
 
 - **字体、字体大小、字体粗细、字间距、字体颜色：** 设定字体样式。
 
-![Create37](../_images/zh-cn//Create37.gif)
+![Create37](../_images/zh-cn/Create37.gif)
 
 - **背景颜色、文本修饰、左右对齐、上下对齐、文本换行、旋转角度、元素层级：** 进一步调整文本外观。
 
-![Create38](../_images/zh-cn//Create38.gif)
+![Create38](../_images/zh-cn/Create38.gif)
 
 ## 三、边框属性
 
@@ -47,7 +47,7 @@
 - **边框大小、边框颜色：** 调整边框的大小和颜色。
 - **左内边距、上内边距、右内边距、下内边距：** 设定文本内容与边框的内边距。
 
-![Create39](../_images/zh-cn//Create39.gif)
+![Create39](../_images/zh-cn/Create39.gif)
 
 ## 四、高级属性
 

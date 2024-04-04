@@ -10,7 +10,7 @@
 - **点击显示区域**进行旋转。
 - **拖动显示区域**调整大小。
 
-![Create59](../_images/zh-cn//Create59.gif)
+![Create59](../_images/zh-cn/Create59.gif)
 
 # 属性值设置
 
@@ -23,14 +23,14 @@
 - **位置坐标、宽度大小：** 调整元素的坐标位置和宽度大小。
 - **位置固定：** 设定元素是否固定在某个位置。
 
-![Create60](../_images/zh-cn//Create60.gif)
+![Create60](../_images/zh-cn/Create60.gif)
 
 ## 二、样式属性
 
 - **字体颜色、背景颜色：** 调整元素的排列间距以及字体和背景颜色。
 - **旋转角度、元素层级：**设置元素行高、旋转角度以及元素的图层叠放顺序。
 
-![Create61](../_images/zh-cn//Create61.gif)
+![Create61](../_images/zh-cn/Create61.gif)
 
 ## 三、高级属性
 
