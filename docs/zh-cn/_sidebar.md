@@ -26,13 +26,13 @@
   - [富文本框内容打印](ad-richTextArea.md)
   
 - 应用场景
-  - [请求书](ad-print.md)
+  - [请求书](sc-request.md)
   - [条码/二维码标签](sc-barcode.md)
-  - [购物小票](ad-print.md)
-  - [申告书](ad-print.md)
-  - [云打印](ad-print.md)
-  - [自定义开发](ad-print.md)
-  - [商品BARCODE印刷](ad-print.md)
+  - [购物小票](sc-barcode.md)
+  - [申告书](sc-barcode.md)
+  - [云打印](sc-barcode.md)
+  - [自定义开发](sc-barcode.md)
+  - [商品BARCODE印刷](sc-barcode.md)
 
 - 下载
   - [打印终端](download.md)
