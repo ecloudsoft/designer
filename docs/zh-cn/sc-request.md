@@ -315,9 +315,9 @@
 
 ![Create162](../_images/zh-cn/Create162.gif)
 
-![Create162.1](../_images/zh-cn/Create162.1.png)
+- 12.4.1 完整Apex Class代码。如下图所示：
 
-![Create162.2](../_images/zh-cn/Create162.2.png)
+![Create162.1](../_images/zh-cn/Create162.1.png)
 
 # **13. 打印预览和导出PDF**
 
