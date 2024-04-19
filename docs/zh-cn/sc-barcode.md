@@ -1,7 +1,7 @@
 # 条码/二维码标签
 
 <aside>
-💡 条形码和二维码在报表设计中被广泛使用。当在设计报表过程中需要添加或修改条形码或二维码时，您可以参考本章的说明进行操作。在报表设计器中，添加条形码或二维码通常包括选择数据源与字段、确定条码类型、调整布局格式等步骤，并可利用预览功能进行查看和调试。
+💡 在仓库管理和零售业务中，条形码和二维码标签扮演着重要的角色。通过为每个产品分配唯一的标识码，并将相关信息编码入条形码或二维码，我们可以实现对产品的精确跟踪，以及高效的库存管理和交易处理。
 </aside>
 <br>
 
@@ -13,13 +13,13 @@
 
 # **1. 打开设计器**
 
-1.1 通过Home Tab的快速开始或新建模板数据的方式打开设计器。如下图所示：
+- 1.1 通过Home Tab的快速开始或新建模板数据的方式打开设计器。如下图所示：
 
 ![Create163](../_images/zh-cn/Create163.gif)
 
 # **2. 准备报表**
 
-- 2.1 在开始设计过程时，有多种方式可以帮助您创建设计的基础。您可以选择扫描一个现有的报表，从网络上下载一个报表，直接从设计工具的模板中心选取一个模板或者新建一个模板。例如，你可以从模板中心选取一个模板，如下图所示：
+- 2.1 在开始设计过程时，有多种方式可以帮助您创建设计的基础。您可以选择扫描一个现有的报表，从网络上下载一个报表，直接从设计工具的模板中心选取一个模板或者新建一个模板。例如，你可以从模板中心选取 BAR-QR 示例（水平）模板，如下图所示：
 
 ![Create164](../_images/zh-cn/Create164.gif)
 
@@ -35,106 +35,109 @@
 
 - 4.1 元素的宽高大小设置可查看[请求书](sc-request.md)中的**第4步**。
 
-# **5. 添加二维码并设置二维码的属性**
+# **5. 编辑模板**
 
-#### **添加二维码**
-
-- 5.1 在设计器中，您可以拖拽一个二维码元素到面板中。如下图所示：
+- 5.1 将模板调整至满足预期的效果。需要注意的是：由于需要修改的元素过多，本示例仅展示了如何修改'Delivery No.'字段，实际操作中，可能需要将所有元素的字段名或样式等调整到预期效果。如下图所示：
 
 ![Create165](../_images/zh-cn/Create165.gif)
 
-#### **基础**
+# **6. 编辑打印数据、查看JSON数据模型、导出、从本地文件导入和预览功能**
 
-- 5.2 设置了字段名后您就可以在提取业务数据时将其与数据字段进行绑定。这样，当您预览时，抽取出的数据可以通过其绑定关系找到并显示相应的元素。此外，设置好字段名后，您还可以在测试数据中输入您的业务数据，以此来验证元素设置的正确性。如下图所示：
+- 6.1 编辑打印数据、查看JSON数据模型等功能可查看[请求书](sc-request.md)中的**第10步**。
+
+# **7. 保存模板和查看模板信息**
+
+- 7.1 保存模板和查看模板信息处理可查看[请求书](sc-request.md)中的**第11步**。
+
+# **8. 抽取业务数据**
+
+- 8.1 通过点击查看Apex Class数据模型按钮或通过快捷键(Ctrl / Command + M)打开查看Apex Class数据模型画面，将代码全部复制后点击取消全屏按钮，并打开已保存的模板数据查看模板的信息，复制的代码用于**8.3步骤**创建自定义打印数据返回的对象。如下图所示：
 
 ![Create166](../_images/zh-cn/Create166.gif)
 
-- 5.3 标题显示隐藏：对于二维码元素，其标题不会显示。
+- 8.2 抽取业务数据处理可查看[请求书](sc-request.md)中的**第12步**。
 
-#### **样式**
-
-- 5.4 您可以通过调整'旋转角度'来改变元素的方向。系统支持从-180度到180度的调整范围。如下图所示：
+- 8.3 通过**8.1步骤**复制的代码创建一个新的ApexClass文件，用于自定义开发抽取数据后返回的对象。如下图所示：
 
 ![Create167](../_images/zh-cn/Create167.gif)
 
-- 5.5 元素层级设置用于决定元素在重叠时的显示优先级，设置值越大的元素其层级越高，相应地也将显示在更上层。
-
-#### **边框**
-
-- 5.6 边框设置：您可以为当前元素添加上、下、左、右四个方向的边框，并可以设定边框的粗细和颜色。同时，您也可以调整元素内部数据跟边框之间在上、下、左、右四个方向的边距。如下图所示：
+- 8.4 编辑通过**8.2步骤**新建的Apex Class文件，通过自定义开发，编写SQL抽取业务数据。如下图所示：
 
 ![Create168](../_images/zh-cn/Create168.gif)
 
-#### **高级**
+- 8.4.1 完整Apex Class代码。如下所示：
 
-- 5.7 打印类型会根据当前元素的类型自动选择。当前元素是二维码，那么打印类型就会默认选择二维码。您也可以手动设置为其他类型，如：文本或条形码。
+```
+public with sharing class Demo_Ctrl01 {
+    public Demo_Ctrl01 (ApexPages.StandardController controller) {}
+    public List<String> templateNames {get; set;}
+    public String dataSource { get; set; }
+    public String printSeviceName { get; set; }
+    public String machineId { get; set; }
+    public String printMode { get; set; }
+    public List<String> itemIds { get; set; }
+    public List<SObject> selectedObjects { get; set; }
 
-- 5.8 二维码容错率：这是指二维码在被扫描时能够容忍的错误和损坏的程度。通常以百分比表示，代表二维码中允许存在的错误比例。容错率越高，二维码能够承受的错误就越多。然而，需要注意的是，容错率越高，二维码的密度就会越低，因为一部分空间需要用于错误修复。因此，如果希望提高容错率，可能需要相应地增加二维码的尺寸，以容纳更多的错误修正信息。
+    public void initAction() {
+        templateNames = new List<String>{'バーコードとQRコード'};
+        // カスタム開発ではこのフィールドを設定できます
+        dataSource = objectDataToJsonStr();
+        printSeviceName = 'Print Cloud Service Config';
+        machineId = 'fdcd6b04-9b6e-48b1-8e57-0ee5caf88063';
+    }
 
-# **6. 添加条形码并设置条形码的属性**
+    private String objectDataToJsonStr () {
+        List<eprint__product_order__c> productOrders = [
+            SELECT 
+                Name, eprint__orderNo__c, eprint__country__c, eprint__registrationNumber__c, eprint__no__c,
+                (SELECT eprint__barCode__c, eprint__qrCode__c, eprint__productName__c, eprint__quantity__c,
+                    eprint__address__c, eprint__tel__c, eprint__batchNumber__c, eprint__lineNo__c
+                FROM eprint_product_order_info__r)
+            FROM eprint__product_order__c
+            WHERE Name = 'PO-0003'
+        ];
+        List<TemplateProject> templateProjects = new List<TemplateProject>();
+        for (eprint__product_order__c productOrder : productOrders) {
+            for (eprint__product_order_info__c productOrderInfo : productOrder.eprint_product_order_info__r) {
+                TemplateProject templateProject = new TemplateProject();
+                // barcode
+                templateProject.barcode = productOrderInfo.eprint__barCode__c;
+                // qrcode
+                templateProject.qrcode = productOrderInfo.eprint__qrCode__c;
+                // 23K
+                templateProject.lineNo = productOrderInfo.eprint__lineNo__c;
+                // 商品名の値
+                templateProject.productName = productOrderInfo.eprint__productName__c;
+                // 配送数量の値
+                templateProject.quantity = String.valueOf(productOrderInfo.eprint__quantity__c);
+                // 商品注文名の値
+                templateProject.Name = productOrder.Name;
+                // 注文番号の値
+                templateProject.orderNo = productOrder.eprint__orderNo__c;
+                // 配送住所の値
+                templateProject.address = productOrderInfo.eprint__address__c;
+                // カントリーの値
+                templateProject.country = productOrder.eprint__country__c;
+                // 登録番号の値
+                templateProject.registrationNumber = productOrder.eprint__registrationNumber__c;
+                // 連絡電話の値
+                templateProject.tel = productOrderInfo.eprint__tel__c;
+                // 番号の値
+                templateProject.no = productOrder.eprint__no__c;
+                // 出荷番号の値
+                templateProject.batchNumber = productOrderInfo.eprint__batchNumber__c;
+                templateProjects.add(templateProject);
+            }
+        }
+        return JSON.serialize(templateProjects);
+    }
+}
+```
 
-#### **添加条形码**
+# **9. 打印预览和导出PDF**
 
-- 6.1 在设计器中，您可以拖拽一个条形码元素到面板中。如下图所示：
+- 9.1 打印预览和导出PDF处理可查看[请求书](sc-request.md)中的**第13步**。
+
+- 9.2 预览模板最终结果。如下图所示：
 
 ![Create169](../_images/zh-cn/Create169.gif)
-
-#### **基础**
-
-- 6.2 设置了字段名后您就可以在提取业务数据时将其与数据字段进行绑定。这样，当您预览时，抽取出的数据可以通过其绑定关系找到并显示相应的元素。此外，设置好字段名后，您还可以在测试数据中输入您的业务数据，以此来验证元素设置的正确性。如下图所示：
-
-![Create170](../_images/zh-cn/Create170.gif)
-
-- 6.3 标题显示隐藏：对于条形码元素，其标题则会默认显示。如果您不希望显示条形码元素的标题，可以选择将其隐藏。如下图所示：
-
-![Create171](../_images/zh-cn/Create171.gif)
-
-#### **样式**
-
-- 6.4 您可以通过调整'旋转角度'来改变元素的方向。系统支持从-180度到180度的调整范围。如下图所示：
-
-![Create172](../_images/zh-cn/Create172.gif)
-
-- 6.5 元素层级设置用于决定元素在重叠时的显示优先级，设置值越大的元素其层级越高，相应地也将显示在更上层。
-
-#### **边框**
-
-- 6.6 边框设置：您可以为当前元素添加上、下、左、右四个方向的边框，并可以设定边框的粗细和颜色。同时，您也可以调整元素内部数据跟边框之间在上、下、左、右四个方向的边距。如下图所示：
-
-![Create173](../_images/zh-cn/Create173.gif)
-
-#### **高级**
-
-- 6.7 打印类型会根据当前元素的类型自动选择。当前元素是条形码，那么打印类型就会默认选择条形码。您也可以手动设置为其他类型，如：文本或二维码。
-
-- 6.8 条形码格式：您可以选择多种不同的条形码格式。如下图所示：
-
-![Create174](../_images/zh-cn/Create174.gif)
-
-# **7. 编辑打印数据、查看JSON数据模型、导出、从本地文件导入和预览功能**
-
-- 7.1 编辑打印数据、查看JSON数据模型等功能可查看[请求书](sc-request.md)中的**第10步**。
-
-# **8. 保存模板和查看模板信息**
-
-- 8.1 保存模板和查看模板信息处理可查看[请求书](sc-request.md)中的**第11步**。
-
-# **9. 抽取业务数据**
-
-- 9.1 抽取业务数据处理可查看[请求书](sc-request.md)中的**第12步**。
-
-- 9.2 编辑新建的Apex Class文件，通过自定义开发，编写SQL抽取业务数据。如下图所示：
-
-![Create175](../_images/zh-cn/Create175.gif)
-
-- 9.2.1 完整Apex Class代码。如下图所示：
-
-![Create175.1](../_images/zh-cn/Create175.1.png)
-
-# **10. 打印预览和导出PDF**
-
-- 10.1 抽取业务数据处理可查看[请求书](sc-request.md)中的**第13步**。
-
-- 10.2 预览模板最终结果。如下图所示：
-
-![Create176](../_images/zh-cn/Create176.gif)

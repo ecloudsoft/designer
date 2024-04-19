@@ -28,7 +28,7 @@
 - 应用场景
   - [请求书](sc-request.md)
   - [条码/二维码标签](sc-barcode.md)
-  - [购物小票](sc-barcode.md)
+  - [购物小票](sc-shoppingReceipt.md)
   - [申告书](sc-barcode.md)
   - [云打印](sc-barcode.md)
   - [自定义开发](sc-barcode.md)
