@@ -95,4 +95,141 @@
 
 # **10. 抽取业务数据**
 
-- 10.1 抽取业务数据处理可查看[请求书](sc-request.md)中的**第12步**。
+- 10.1 通过点击查看Apex Class数据模型按钮或通过快捷键(Ctrl / Command + M)打开查看Apex Class数据模型画面，将代码全部复制后点击取消全屏按钮，并打开已保存的模板数据查看模板的信息，复制的代码用于**10.3步骤**创建自定义打印数据返回的对象。如下图所示：
+
+![Create181](../_images/zh-cn/Create181.gif)
+
+- 10.2 抽取业务数据处理可查看[请求书](sc-request.md)中的**第12步**。
+
+- 10.3 通过**10.1步骤**复制的代码创建一个新的ApexClass文件，用于自定义开发抽取数据后返回的对象。如下图所示：
+
+![Create182](../_images/zh-cn/Create182.gif)
+
+- 10.4 编辑通过**10.2步骤**新建的Apex Class文件，通过自定义开发，编写SQL抽取业务数据。如下图所示：
+
+![Create183](../_images/zh-cn/Create183.gif)
+
+- 10.4.1 完整Apex Class代码。如下所示：
+
+```
+public with sharing class Demo_Ctrl01 {
+    public Demo_Ctrl01 (ApexPages.StandardController controller) {}
+    public List<String> templateNames {get; set;}
+    public String dataSource { get; set; }
+    public String printSeviceName { get; set; }
+    public String machineId { get; set; }
+    public String printMode { get; set; }
+    public List<String> itemIds { get; set; }
+    public List<SObject> selectedObjects { get; set; }
+
+    public void initAction() {
+        templateNames = new List<String>{'買い物のレシート'};
+        // カスタム開発ではこのフィールドを設定できます
+        dataSource = objectDataToJsonStr();
+        printSeviceName = 'Print Cloud Service Config';
+        machineId = 'fdcd6b04-9b6e-48b1-8e57-0ee5caf88063';
+    }
+
+    private String objectDataToJsonStr () {
+        List<eprint__store_info__c> storeInfos = [
+            SELECT 
+                eprint__logo__c,
+                eprint__posno__c,
+                eprint__dt__c,
+                eprint__total__c,
+                eprint__tax__c,
+                eprint__regno__c,
+                eprint__charge__c,
+                (
+                    SELECT 
+                        eprint__prodname__c, 
+                        eprint__price__c
+                    FROM 
+                        eprint_store_product_info__r
+                ),
+                (
+                    SELECT 
+                        eprint__payname__c, 
+                        eprint__payamount__c
+                    FROM 
+                        eprint_payment_method__r
+                ),
+                (
+                    SELECT 
+                        eprint__content__c, 
+                        eprint__url__c
+                    FROM 
+                        eprint_store_events__r
+                )
+            FROM 
+                eprint__store_info__c
+            WHERE 
+                Name = 'SI-0001'
+        ];
+        List<TemplateProject> templateProjects = new List<TemplateProject>();
+        for (eprint__store_info__c storeInfo : storeInfos) {
+            TemplateProject templateProject = new TemplateProject();
+            // ロゴ
+            templateProject.logo = storeInfo.eprint__logo__c;
+            // ポスノ
+            templateProject.posno = storeInfo.eprint__posno__c;
+            // 日付/時間
+            templateProject.dt = String.valueOf(storeInfo.eprint__dt__c);
+            // 合計
+            templateProject.total = String.valueOf(storeInfo.eprint__total__c);
+            // 税
+            templateProject.tax = String.valueOf(storeInfo.eprint__tax__c);
+            // ﾚｼﾞ
+            templateProject.regno = storeInfo.eprint__regno__c;
+            // 責
+            templateProject.charge = storeInfo.eprint__charge__c;
+            // prods を初期化する
+            templateProject.prods = new List<TemplateProject.prodsClass>();
+            for (eprint__store_product_info__c storeProductInfo : storeInfo.eprint_store_product_info__r) {
+                // prodsClass を初期化する
+                TemplateProject.prodsClass prodsClass = new TemplateProject.prodsClass(); 
+                // 商品名
+                prodsClass.prodname = storeProductInfo.eprint__prodname__c;
+                // 価格
+                prodsClass.price = String.valueOf(storeProductInfo.eprint__price__c);
+                // 各prodsClassを prods に追加します
+                templateProject.prods.add(prodsClass);
+            }
+            // paylist を初期化する
+            templateProject.paylist = new List<TemplateProject.paylistClass>();
+            for (eprint__payment_method__c paymentMethodInfo : storeInfo.eprint_payment_method__r) {
+                // paylistClass を初期化する
+                TemplateProject.paylistClass paylistClass = new TemplateProject.paylistClass(); 
+                // 支払い名
+                paylistClass.payname = paymentMethodInfo.eprint__payname__c;
+                // 支払額
+                paylistClass.payamount = String.valueOf(paymentMethodInfo.eprint__payamount__c);
+                // 各paylistClassを paylist に追加します
+                templateProject.paylist.add(paylistClass);
+            }
+            // campaign を初期化する
+            templateProject.campaign = new List<TemplateProject.campaignClass>();
+            for (eprint__store_events__c storeEventsInfo : storeInfo.eprint_store_events__r) {
+                // campaign を初期化する
+                TemplateProject.campaignClass campaignClass = new TemplateProject.campaignClass(); 
+                // コンテンツ
+                campaignClass.content = storeEventsInfo.eprint__content__c;
+                // URL
+                campaignClass.url = storeEventsInfo.eprint__url__c;
+                // 各campaignClassを campaign に追加します
+                templateProject.campaign.add(campaignClass);
+            }
+            templateProjects.add(templateProject);
+        }
+        return JSON.serialize(templateProjects);
+    }
+}
+```
+
+# **11. 打印预览和导出PDF**
+
+- 11.1 打印预览和导出PDF处理可查看[请求书](sc-request.md)中的**第13步**。
+
+- 11.2 预览模板最终结果。如下图所示：
+
+![Create184](../_images/zh-cn/Create184.gif)
