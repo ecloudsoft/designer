@@ -124,10 +124,14 @@ public with sharing class Demo_Ctrl01 {
 
 - 9.1 打印预览和导出PDF处理可查看[请求书](sc-request.md)中的**第13步**。
 
-- 9.2 List画面选择多笔数据后预览模板结果。如下图所示：
+- 9.2 添加List批量打印按钮。如下图所示：
 
 ![Create203](../_images/zh-cn/Create203.gif)
 
-- 9.3 List画面选择单笔数据后预览模板结果。如下图所示：
+- 9.3 List画面选择多笔数据后预览模板结果。如下图所示：
 
 ![Create204](../_images/zh-cn/Create204.gif)
+
+- 9.4 List画面选择单笔数据后预览模板结果。如下图所示：
+
+![Create205](../_images/zh-cn/Create205.gif)
