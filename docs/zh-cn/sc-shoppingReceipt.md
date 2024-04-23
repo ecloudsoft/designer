@@ -145,6 +145,7 @@ public with sharing class Demo_Ctrl01 {
                         eprint__prodname__c, 
                         eprint__price__c
                     FROM 
+                        // 子表1：店舗商品の情報、含む(商品名と価格)
                         eprint_store_product_info__r
                 ),
                 (
@@ -152,6 +153,7 @@ public with sharing class Demo_Ctrl01 {
                         eprint__payname__c, 
                         eprint__payamount__c
                     FROM 
+                        // 子表2：支払方法、含む（支払名と支払額）
                         eprint_payment_method__r
                 ),
                 (
@@ -159,9 +161,11 @@ public with sharing class Demo_Ctrl01 {
                         eprint__content__c, 
                         eprint__url__c
                     FROM 
+                        // 子表3：店舗活動、含む(内容とURL)
                         eprint_store_events__r
                 )
             FROM 
+                // 主表：店舗の基本情報
                 eprint__store_info__c
             WHERE 
                 Name = 'SI-0001'

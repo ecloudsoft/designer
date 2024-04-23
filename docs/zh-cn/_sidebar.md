@@ -29,10 +29,10 @@
   - [请求书](sc-request.md)
   - [条码/二维码标签](sc-barcode.md)
   - [购物小票](sc-shoppingReceipt.md)
-  - [申告书](sc-barcode.md)
-  - [云打印](sc-barcode.md)
-  - [自定义开发](sc-barcode.md)
-  - [商品BARCODE印刷](sc-barcode.md)
+  - [申告书](sc-declarationForm.md)
+  - [云打印](sc-cloudPrint.md)
+  - [自定义开发](sc-customDevelop.md)
+  - [商品BARCODE印刷](sc-productBarCodePrint.md)
 
 - 下载
   - [打印终端](download.md)
