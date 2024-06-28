@@ -36,6 +36,7 @@
 
 - 下载
   - [打印终端](download.md)
+  - [数字证书导入](certificate.md)
   - [Salesforce]
 - 支持
   - [FAQ](sp-qa.md)
