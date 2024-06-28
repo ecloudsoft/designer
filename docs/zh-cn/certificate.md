@@ -3,7 +3,7 @@
 ### 1. 启动程序[EC Print Agent]
 - 点击[EC Print Agent]启动
 
-![certificate1](../_images/zh-cn/certificate/certificate1.gif =1000px)
+ ![certificate1](../_images/zh-cn/certificate/certificate1.png)
 
 ### 2. 下载数字证书
 - 点击画面上的内容[下载数字证书（用于本地服务）]，保存到本地。
